@@ -1,0 +1,10 @@
+.todo-item {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    align-items: center;
+
+    input {
+        margin-right: 30px;
+    }
+}

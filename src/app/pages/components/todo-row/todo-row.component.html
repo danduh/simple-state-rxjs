@@ -1,0 +1,5 @@
+<div class="todo-item">
+    <input #isComplete type="checkbox"
+           [checked]="todo.done"
+           (change)="completeToggle()"/><h3>{{todo.title}}</h3>
+</div>
