@@ -1,0 +1,15 @@
+<div class="todo-summary">
+    <h1>Todo Summary</h1>
+
+    <div class="summary">
+        <h4>Total<em>{{todoSummary?.total}}</em></h4>
+    </div>
+    <div class="summary">
+        <h4>Done<em>{{todoSummary?.done}}</em></h4>
+    </div>
+    <div class="summary">
+        <h4>Not Done<em>{{todoSummary?.notDone}}</em></h4>
+    </div>
+
+    <button (click)="load()">Reload</button>
+</div>

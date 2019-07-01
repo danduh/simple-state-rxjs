@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Todo} from '../../../services/todo';
+import {ApiService} from '../../../services/api.service';
 
 @Component({
     selector: 'app-todo-row',
@@ -9,7 +10,7 @@ import {Todo} from '../../../services/todo';
 export class TodoRowComponent implements OnInit {
     @Input() todo: Todo;
 
-    constructor() {
+    constructor(private apiService: ApiService) {
     }
 
     ngOnInit() {
@@ -18,5 +19,9 @@ export class TodoRowComponent implements OnInit {
 
     completeToggle() {
         this.todo.done = !this.todo.done;
+
+        this.apiService
+            .updateOne(this.todo)
+            .subscribe();
     }
 }

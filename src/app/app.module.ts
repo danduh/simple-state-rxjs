@@ -9,6 +9,7 @@ import {TodoRowComponent} from './pages/components/todo-row/todo-row.component';
 import {TodoFormComponent} from './pages/components/todo-form/todo-form.component';
 import {FormsModule} from '@angular/forms';
 import {ApiService} from './services/api.service';
+import {TodoSummaryComponent} from './pages/components/todo-summary/todo-summary.component';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import {ApiService} from './services/api.service';
         TodoPageComponent,
         TodoListComponent,
         TodoRowComponent,
-        TodoFormComponent
+        TodoFormComponent,
+        TodoSummaryComponent
     ],
     imports: [
         BrowserModule,
