@@ -10,6 +10,7 @@ import {TodoFormComponent} from './pages/components/todo-form/todo-form.componen
 import {FormsModule} from '@angular/forms';
 import {ApiService} from './services/api.service';
 import {TodoSummaryComponent} from './pages/components/todo-summary/todo-summary.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import {TodoSummaryComponent} from './pages/components/todo-summary/todo-summary
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule,
     ],
     providers: [
         ApiService

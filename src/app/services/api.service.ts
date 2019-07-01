@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Todo} from './todo';
-import {observable, Observable, of} from 'rxjs';
-import {makeid} from './utils';
+import {Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 export const TODOS: Todo[] = [
     {
@@ -27,24 +27,18 @@ export const TODOS: Todo[] = [
 export class ApiService {
     private todos = TODOS;
 
-    constructor() {
+    constructor(private http: HttpClient) {
     }
 
-    loadAll() {
-        console.log('Loaded All', console.log(this.todos));
-        return of([...JSON.parse(JSON.stringify(this.todos))]);
+    loadAll(): Observable<Todo[]> {
+        return this.http.get<Todo[]>('http://localhost:3000/todos');
     }
-
     addOne(todo: Todo) {
-        return new Observable((subscriber) => {
-            todo.id = makeid(10);
-            this.todos.push(todo);
-            console.log('Added One', todo);
-            subscriber.complete();
-        });
+        return return this.http.post<Todo[]>('http://localhost:3000/todos', todo);
     }
 
     updateOne(todo: Todo) {
+        return return this.http.post<Todo[]>('http://localhost:3000/todos', todo);
         return new Observable((subscriber) => {
             this.todos.find((t) => t.id === todo.id).done = todo.done;
             console.log('Updated One', todo);
