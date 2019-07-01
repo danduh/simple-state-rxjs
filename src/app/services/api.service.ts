@@ -33,16 +33,12 @@ export class ApiService {
     loadAll(): Observable<Todo[]> {
         return this.http.get<Todo[]>('http://localhost:3000/todos');
     }
+
     addOne(todo: Todo) {
-        return return this.http.post<Todo[]>('http://localhost:3000/todos', todo);
+        return this.http.post<Todo[]>('http://localhost:3000/todos', todo);
     }
 
     updateOne(todo: Todo) {
-        return return this.http.post<Todo[]>('http://localhost:3000/todos', todo);
-        return new Observable((subscriber) => {
-            this.todos.find((t) => t.id === todo.id).done = todo.done;
-            console.log('Updated One', todo);
-            subscriber.complete();
-        });
+        return this.http.put<Todo[]>('http://localhost:3000/todos/' + todo.id, todo);
     }
 }
