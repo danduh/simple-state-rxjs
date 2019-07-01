@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Todo} from './todo';
-import {of} from 'rxjs';
+import {Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 export const TODOS: Todo[] = [
     {
@@ -26,10 +27,10 @@ export const TODOS: Todo[] = [
 export class ApiService {
     private todos = TODOS;
 
-    constructor() {
+    constructor(private http: HttpClient) {
     }
 
-    loadAll() {
-        return of(this.todos);
+    loadAll(): Observable<Todo[]> {
+        return this.http.get<Todo[]>('http://localhost:3000/todos');
     }
 }

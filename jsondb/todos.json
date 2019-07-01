@@ -1,0 +1,19 @@
+{
+    "todos": [
+        {
+            "id": "sadasd",
+            "title": "Apple",
+            "done": false
+        },
+        {
+            "id": "sadacsf",
+            "title": "Raspberry",
+            "done": true
+        },
+        {
+            "id": "sa23df",
+            "title": "CocaCola ",
+            "done": false
+        }
+    ]
+}
