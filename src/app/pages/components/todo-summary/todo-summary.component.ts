@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {Todo} from '../../../services/todo';
+import {StoreService} from '../../../services/store.service';
 
 export interface TodoSummary {
     total: number;
@@ -16,11 +17,10 @@ export interface TodoSummary {
 export class TodoSummaryComponent implements OnInit {
     public todoSummary: TodoSummary = {} as TodoSummary;
 
-    constructor(private apiService: ApiService) {
+    constructor(private apiService: ApiService, private store: StoreService) {
     }
 
     ngOnInit() {
-
     }
 
     load() {
