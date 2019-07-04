@@ -11,7 +11,7 @@ export class StoreService {
     constructor(private apiService: ApiService) {
     }
 
-    private readonly todosSubj = new BehaviorSubject<Todo[]>([]);
+    private todosSubj = new BehaviorSubject<Todo[]>([]);
     public todos$ = this.todosSubj.asObservable();
 
     public total$ = this.todos$
@@ -37,7 +37,12 @@ export class StoreService {
 
     addTodo(todo: Todo) {
         this.apiService.addOne(todo)
-            .subscribe(t => this.todosSubj.next(t));
+            .subscribe((response) => {
+                let todos;
+                this.todos$.subscribe((_todo) => todos = _todo);
+                todos.push(response);
+                this.todosSubj.next([...todos]);
+            });
     }
 
     toggleTodo(id: number) {

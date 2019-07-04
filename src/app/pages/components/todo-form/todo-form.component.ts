@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from '../../../services/api.service';
 import {Todo} from '../../../services/todo';
+import {StoreService} from '../../../services/store.service';
 
 @Component({
     selector: 'app-todo-form',
@@ -10,7 +11,8 @@ import {Todo} from '../../../services/todo';
 export class TodoFormComponent implements OnInit {
     public title;
 
-    constructor(public apiService: ApiService) {
+    constructor(public apiService: ApiService,
+                public store: StoreService) {
     }
 
     ngOnInit() {
@@ -23,11 +25,12 @@ export class TodoFormComponent implements OnInit {
             done: false
         };
         this.title = null;
+        this.store.addTodo(todo);
 
-        this.apiService
-            .addOne(todo)
-            .subscribe(() => {
-
-            });
+        // this.apiService
+        //     .addOne(todo)
+        //     .subscribe(() => {
+        //
+        //     });
     }
 }

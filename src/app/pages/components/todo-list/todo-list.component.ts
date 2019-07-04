@@ -18,10 +18,11 @@ export class TodoListComponent implements OnInit {
 
     ngOnInit() {
         this.load();
+        this.allTodos$ = this.store.todos$;
     }
 
     load() {
-        this.allTodos$ = this.apiService.loadAll();
+        this.store.getAll();
     }
 
 }

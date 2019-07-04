@@ -16,11 +16,18 @@ export interface TodoSummary {
 })
 export class TodoSummaryComponent implements OnInit {
     public todoSummary: TodoSummary = {} as TodoSummary;
+    public total;
 
-    constructor(private apiService: ApiService, private store: StoreService) {
+    constructor(private apiService: ApiService,
+                private store: StoreService) {
     }
 
     ngOnInit() {
+        this.store.total$.subscribe((t) => this.total = t);
+        this.store.summary$.subscribe((sum) => {
+            this.todoSummary = sum;
+        });
+
     }
 
     load() {
@@ -29,12 +36,6 @@ export class TodoSummaryComponent implements OnInit {
 
 
     loadData() {
-        this.apiService.loadAll()
-            .subscribe((todos: Todo[]) => {
-                this.todoSummary.total = todos.length;
-                this.todoSummary.done = todos.filter(f => f.done === true).length;
-                this.todoSummary.notDone = todos.filter(f => f.done === false).length;
-            });
     }
 
 }
